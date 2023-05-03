@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UserController!{% endblock %}
+
+{% block body %}
+<h1 class="text-center mt-5">Liste des utilisateurs</h1>
+<hr/>
+{% for user in users  %}
+{% if user.roles | json_encode == '["ROLE_ADMIN","ROLE_USER"]' %}
+{% else %}
+<p class="text-center"><a href="{{ path("user_show", {id:user.id}) }}">{{ user.email }}</a></p>
+<hr/>
+{% endif %}
+{% endfor  %}
+{% endblock %}

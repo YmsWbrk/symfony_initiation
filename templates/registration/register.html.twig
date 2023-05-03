@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+{% form_theme registrationForm 'bootstrap_5_layout.html.twig' %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset("dist/assets/css/register.css") }}">
+{% endblock %}
+
+{% block body %}
+    <h1>S'enregistrer</h1>
+<div class="jumbotron-register">
+    {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.email) }}
+        {{ form_row(registrationForm.plainPassword, {
+            label: 'Password'
+        }) }}
+        <button type="submit" class="btn btn-success" class="btn">S'enregistrer</button>
+    {{ form_end(registrationForm) }}
+</div>
+{% endblock %}

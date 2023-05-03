@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="text-center">
+<h1 class="mt-5">Modifier mon avatar</h1>
+<hr/>
+<form method="POST" enctype="multipart/form-data">
+<div class="form-group">
+<input type="file" name="avatar" class="input-file" required />
+</div>
+<button type="submit" class="btn btn-success mt-5">Modifier</button>
+</form>
+</div>
+{% endblock %}
+
+

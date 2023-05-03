@@ -1,0 +1,80 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+<style>
+ul{
+    list-style: none;
+}
+.profil{
+    max-width: 23%;
+    max-height: auto;
+    border-radius: 100%;
+    border: solid 8px #d5c3aa;
+    background-color: #d5c3aa;
+}
+</style>
+{% endblock %}
+
+{% block body %}
+{% if app.user %}
+<div class="text-center">
+<h1 class="mt-5">Modifier mon profil</h1>
+<hr/>
+<img src="{{ app.user.avatar }}" class="profil mb-5" alt="avatar_user" />
+<ul>
+        <li class="nav-item mb-5">
+          <a class="nav-link" href="{{ path("app_update", {id:app.user.id}) }}">
+          <button class="btn btn-warning">
+          modifier mon mot de passe
+          </button>          
+          </a>
+        </li>
+        <li class="nav-item mb-5">
+          <a class="nav-link" href="{{ path("update_pseudo", {id:app.user.id}) }}">
+          <button class="btn btn-primary">
+          modifier mon pseudo
+          </button>          
+          </a>
+        </li>
+       <li class="nav-item mb-5">
+          <a class="nav-link" href="{{ path("update_avatar", {id:app.user.id}) }}">
+          <button class="btn btn-secondary">
+          modifier mon avatar
+          </button>          
+          </a>
+        </li>
+        <li class="nav-item">
+      <!-- Button trigger modal -->
+         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                     Supprimer mon compte
+         </button>
+        </li>
+</ul>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+        <p class="text-danger">
+        Vous êtes sur le point de supprimer votre compte !
+        </p>
+        <p>Êtes vous certain ?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+          <a class="nav-link text-danger" href="{{ path("app_delete", {id:app.user.id}) }}">
+        <button type="button" class="btn btn-danger">Confirmer</button></a>
+      </div>
+    </div>
+  </div>
+</div>
+{% else %}
+
+{% endif %}
+{% endblock %}

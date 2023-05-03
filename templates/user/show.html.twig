@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UserController!{% endblock %}
+
+{% block body %}
+{% if app.user and app.user.roles | json_encode == '["ROLE_ADMIN","ROLE_USER"]' %}
+<h1 class="text-center mt-5">Détail de l' utilisateur {{ user.id }}</h1>
+<hr/>
+<p class="text-center">{{ user.email }}</p>
+<a href="{{ path("app_delete", {id:user.id}) }}"><button class="btn btn-danger btn-lg">Supprimer</button></a>
+{% else %}
+{% endif %}
+{% endblock %}

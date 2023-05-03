@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block body %}
+<h1 class="text-center mt-5" >Contact</h1>
+<hr/>
+<div class="text-center">
+{{ form_start(formMessage) }}
+{{ form_row(formMessage.email, {'attr': {'class':'form-control'}}) }}
+{{ form_row(formMessage.objet, {'attr': {'class':'form-control'}}) }}
+{{ form_row(formMessage.message, {'attr': {'class':'form-control'}}) }}
+<button type="submit" class="btn btn-primary btn-lg mt-3">Envoyer</button>
+{{ form_end(formMessage) }}
+</div>
+{% endblock %}
